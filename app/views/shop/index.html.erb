@@ -1,0 +1,10 @@
+<p>All products listing:</p>
+
+<table>
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= link_to "Więcej", product %></td>
+  </tr>
+<% end %>
+</table>
