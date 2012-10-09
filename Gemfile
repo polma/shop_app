@@ -36,3 +36,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+#this is to fix a problem with java runtime
+gem 'therubyracer'
