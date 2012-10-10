@@ -1,6 +1,14 @@
-<p>All products listing:</p>
-
+<p>All categories listing:</p>
 <table>
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= link_to "Zobacz kategorię", category %></td>
+  </tr>
+<% end %>
+</table>
+<table>
+<p>All products listing:</p>
 <% @products.each do |product| %>
   <tr>
     <td><%= product.name %></td>

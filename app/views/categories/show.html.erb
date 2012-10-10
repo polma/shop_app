@@ -1,0 +1,8 @@
+<h2>Products in category: <%= @category.name %></h2>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= link_to "Więcej", product %></td>
+  </tr>
+<% end %>
