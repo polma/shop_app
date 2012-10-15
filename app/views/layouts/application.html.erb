@@ -7,8 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <div class="top"> <h1>Witaj w sklepie!</h1> </div>
+    <div class="right">
+      <div class="left">
+        <% @categories.each do |category| %>
+            <p><%= link_to category.name, category %>
+        <% end %>
+        <p>kat</p>
+        <p>kat</p>
+        <p>kat</p>
+        <p>kat</p>
+        <p>kat</p>
+        <p>kat</p>
+        <p>kat</p>
+        <p>kat</p>
+        <p>kat</p>
 
+        <%= yield :left %>
+      </div>
+      <%= yield :right %>
+      <div style="clear:both;"></div>
+    </div>
+    <div class="footer">Sklep internetowy v0.1</div>
+  </div>
 <%= yield %>
-
 </body>
 </html>

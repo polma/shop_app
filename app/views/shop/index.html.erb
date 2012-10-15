@@ -1,18 +1,9 @@
-<p>All categories listing:</p>
-<table>
-<% @categories.each do |category| %>
-  <tr>
-    <td><%= category.name %></td>
-    <td><%= link_to "Zobacz kategorię", category %></td>
-  </tr>
+<% content_for :right do %>
+  <p><b>Wszystkie produkty</b></p>
+  <% @products.each do |product| %>
+    <div class="product">
+      <%= product.name %>
+      <%= link_to "Więcej", product %>
+    </div>
+  <% end %>
 <% end %>
-</table>
-<table>
-<p>All products listing:</p>
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= link_to "Więcej", product %></td>
-  </tr>
-<% end %>
-</table>

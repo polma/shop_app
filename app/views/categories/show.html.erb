@@ -1,8 +1,9 @@
-<h2>Products in category: <%= @category.name %></h2>
-
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= link_to "Więcej", product %></td>
-  </tr>
+<% content_for :right do %>
+  <h2>Produkty w kategorii: <%= @category.name %></h2>
+  <% @products.each do |product| %>
+    <div class="product">
+      <%= product.name %>
+      <%= link_to "Więcej", product %>
+    </div>
+  <% end %>
 <% end %>

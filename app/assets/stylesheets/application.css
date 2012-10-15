@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+div.container { }
+div.top { height:100px; text-align:center;}
+div.left { float:left; margin-left:-120px; width:120px; background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #2446EF 100%);}
+div.right {  padding-left:120px; background-image: -webkit-linear-gradient(top left, #FFFFFF 0%, #00A3EF 100%);}
+div.footer { height:50px; background-color:light yellow; clear:both; font-size:small; text-align:center; }
+
+div.product {border:2px solid red; margin:2px;  float:left; width:150px; height:150px;}
