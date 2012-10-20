@@ -39,3 +39,6 @@ gem 'jquery-rails'
 
 #this is to fix a problem with java runtime
 gem 'therubyracer'
+
+#for logging into admin panel (for now)
+gem 'devise'
