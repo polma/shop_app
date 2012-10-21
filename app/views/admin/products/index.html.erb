@@ -1,0 +1,16 @@
+<% content_for :right do %>
+  <%= link_to "Nowy produkt", new_admin_product_path %>
+  <br />
+  <ul>
+  <%= @products.each do |t| %>
+    <li>Nazwa: <%= t.name %>
+    <ul>
+      <li>Opis: <%= t.description %>
+      <li> Kategoria: <%= t.category_id %> -> <%=Category.find(t.category_id).name %>
+      <li> Cena: <%= t.price / 100 %>
+      <li><%= link_to "Edycja", edit_admin_product_path(t) %>, <%= link_to 'Usuń', admin_product_path(t), :confirm => 'Na pewno?', :method => :delete %>
+    </ul>
+    <br />
+  <% end %>
+  </ul>
+<% end %>

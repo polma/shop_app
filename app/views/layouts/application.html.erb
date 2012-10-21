@@ -7,14 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <ul class="hmenu">
+    <%= render 'devise/menu/registration_items' %>
+    <%= render 'devise/menu/login_items' %>
+  </ul>
   <div class="container">
     <div class="top"> <h1>Witaj w sklepie!</h1> </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="right">
       <div class="left">
-        <% @categories.each do |category| %>
-            <p><%= link_to category.name, category %>
+        <% if @categories %>
+          <% @categories.each do |category| %>
+              <p><%= link_to category.name, category %>
+          <% end %>
         <% end %>
         <p>kat</p>
         <p>kat</p>
@@ -29,10 +35,10 @@
         <%= yield :left %>
       </div>
       <%= yield :right %>
+      <%= yield %>
       <div style="clear:both;"></div>
     </div>
     <div class="footer">Sklep internetowy v0.1</div>
   </div>
-<%= yield %>
 </body>
 </html>

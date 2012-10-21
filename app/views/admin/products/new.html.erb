@@ -1,0 +1,16 @@
+<% content_for :right do %>
+  <h3>Dodawanie produktu</h3>
+  <%= form_for [:admin, @product] do |t| %>
+    <%= t.error_messages %>
+    Nazwa: <%= t.text_field :name %>
+    <br />
+    Opis: <%= t.text_field :description %>
+    <br />
+    Kategoria: <%= t.collection_select :category_id, Category.all, :id, :name %>
+    <br />
+    Cena: <%= t.text_field :price %>
+    <br />
+    <%= t.submit "Utwórz" %>
+    <%= button_to 'Wstecz', :back %>
+  <% end %>
+<% end %>

@@ -1,0 +1,9 @@
+<% content_for :right do %>
+  <h2><%= @product.name %></h2>
+  <h3>Opis przedmiotu:</h3>
+  <%= @product.description %>
+  <h3>Cena:</h3>
+  <b><%= @product.price / 100 %></b>
+  <%= link_to "Edycja", edit_admin_product(@product) =>
+  <%= link_to 'Usuń', @product, :confirm => 'Na pewno?', :method => :delete %>
+<% end %>

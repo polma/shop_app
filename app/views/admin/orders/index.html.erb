@@ -1,4 +1,10 @@
 <% content_for :right do %>
-  <p><b>Yo admin</b></p>
+  <p>Wszystkie zamówienia<p>
+  <ul>
+  <% @orders.each do |t| %>
+    <li><%= link_to "Zamówienie nr "+t.id.to_s, t %>
+  <% end %>
+  </ul>  
 <% end %>
+
 

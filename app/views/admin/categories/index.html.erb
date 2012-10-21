@@ -1,0 +1,13 @@
+<% content_for :right do %>
+  <%= link_to "Nowa kategoria", new_admin_category_path %>
+  <br />
+  <ul>
+  <%= @categories.each do |t| %>
+    <li>Nazwa: <%= t.name %>
+    <ul>
+      <li><%= link_to "Edycja", edit_admin_category_path(t) %>, <%= link_to 'Usuń', admin_category_path(t), :confirm => 'Na pewno?', :method => :delete %>
+    </ul>
+    <br />
+  <% end %>
+  </ul>
+<% end %>

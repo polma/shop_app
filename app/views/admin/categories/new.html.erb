@@ -1,0 +1,10 @@
+<% content_for :right do %>
+  <h3>Dodawanie kategori</h3>
+  <%= form_for [:admin, @category] do |t| %>
+    <%= t.error_messages %>
+    Nazwa: <%= t.text_field :name %>
+    <br />
+    <%= t.submit "Utwórz" %>
+    <%= button_to 'Wstecz', :back %>
+  <% end %>
+<% end %>

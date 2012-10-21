@@ -42,3 +42,6 @@ gem 'therubyracer'
 
 #for logging into admin panel (for now)
 gem 'devise'
+
+#for simple form validation
+gem 'dynamic_form'
