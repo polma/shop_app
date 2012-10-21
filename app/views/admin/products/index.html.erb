@@ -2,7 +2,7 @@
   <%= link_to "Nowy produkt", new_admin_product_path %>
   <br />
   <ul>
-  <%= @products.each do |t| %>
+  <% @products.each do |t| %>
     <li>Nazwa: <%= t.name %>
     <ul>
       <li>Opis: <%= t.description %>
