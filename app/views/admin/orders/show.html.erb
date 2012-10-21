@@ -1,0 +1,15 @@
+<% content_for :right do %>
+  <h2>Id zamówienia: <%= @order.id %></h2>
+  <ul>
+    <li>Id klienta: <%= @order.buyer_id %>
+    <li>Potwierdzone: <%= if @order.confirmed.nil? or not @order.confirmed  then "NIE" else "TAK" end %>
+    <li>Wysłane: <%= if @order.sent.nil? or not @order.sent  then "NIE" else "TAK" end %>
+    <li>Przedmioty:
+      <ul>
+        <% @order.order_items.each do |t| %>
+          <li> <%= t.product.name %>: <%= t.product.price/100.0 %> zł
+        <% end %>
+      </ul>
+    <li>W sumie <%= @order.order_items.sum("price") / 100.0 %> zł
+  </ul>
+<% end %>

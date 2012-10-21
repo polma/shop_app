@@ -1,6 +1,5 @@
 class Admin::CategoriesController < Admin::AdminController
   def index
-    @admin_view = true
     @categories = Category.all
   end
   def new

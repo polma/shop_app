@@ -14,6 +14,11 @@ ShopApp::Application.routes.draw do
     resources :orders
   end
   devise_for :admins
+
+  match 'cart/add/:id' => "cart#add"
+  match 'cart/index' => "cart#index"
+  match 'order/confirm' => "order#confirm"
+  match 'order/validate_address' => "order#validate_address"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,12 @@
+<% content_for :right do %>
+  <h2>Produkty w koszyku</h2>
+  <% if not @products.nil? %>
+    <% @products.each do |product| %>
+      <div class="product">
+        <%= product.name %>
+        <%= link_to "Więcej", product %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= button_to "Potwierdź koszyk", :controller=>"/order", :action => :confirm %>
+<% end %>

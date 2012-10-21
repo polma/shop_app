@@ -15,8 +15,9 @@
     <div class="top"> <h1>Witaj w sklepie!</h1> </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <p>Curr_buyer <%= get_buyer.id %></p>
-    <p><b>Twój koszyk, suma xxx zł.</b></p>
+    <% if not admin_signed_in? %>
+      <p><b><%= link_to "Twój koszyk", :controller => "/cart", :action => :index %>, suma <%= get_cart_sum %> zł.</b></p>
+    <% end %>
     <div class="right">
       <div class="left">
         <% if @categories and not admin_signed_in? %>

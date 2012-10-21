@@ -1,0 +1,24 @@
+<% content_for :right do %>
+  <h2>Podaj adres do wysyłḱi</h2>
+  <%= form_for @shipping, :url => "validate_address" do |t| %>
+    <%= t.error_messages %>
+    Imie: <%= t.text_field :name %>
+    <br />
+    Nazwisko: <%= t.text_field :surname %>
+    <br />
+    Ulica: <%= t.text_field :street %>
+    <br />
+    Numer domu: <%= t.text_field :house_nr %>
+    <br />
+    Numer mieszkania: <%= t.text_field :flat_nr %>
+    <br />
+    Miasto: <%= t.text_field :city %>
+    <br />
+    Kod pocztowy: <%= t.text_field :postal_code %>
+    <br />
+    Kraj: <%= t.text_field :country %>
+    <br />
+    <%= t.submit "Potwierdzam dane" %>
+    <%= button_to 'Wstecz', :back %>
+  <% end %>
+<% end %>

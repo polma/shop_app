@@ -1,8 +1,8 @@
 <% content_for :right do %>
-  <p>Wszystkie zamówienia<p>
+  <h2>Wszystkie zamówienia</h2>
   <ul>
   <% @orders.each do |t| %>
-    <li><%= link_to ("Zamówienie nr "+t.id.to_s), admin_orders_path(t) %>
+    <li><%= link_to ("Zamówienie nr "+t.id.to_s), admin_order_path(t.id) %>
   <% end %>
   </ul>  
 <% end %>
