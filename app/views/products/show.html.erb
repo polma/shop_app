@@ -5,6 +5,9 @@
   <h3>Cena:</h3>
   <b><%= @product.price / 100 %></b>
   <br />
+  <% if not admin_signed_in? %>
+    <%= button_to "Dodaj do koszyka", :controller => :Cart, :action => :add, :id => @product.id %>
+  <% end %>
   <br />
   <%= link_to "Strona główna", root_url %>
 <% end %>

@@ -1,16 +1,20 @@
 ShopApp::Application.routes.draw do
 
   resource :shop
-  namespace :admin do
-    root :to => "orders#index"
-    resources :products
-    resources :categories
-  end
-  devise_for :admins
+  
   root :to => "shop#index"
   resources :products
   resources :categories
   resources :orders
+  
+  namespace :admin do
+    root :to => "orders#index"
+    resources :products
+    resources :categories
+    resources :orders
+  end
+  devise_for :admins
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

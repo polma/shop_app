@@ -15,23 +15,19 @@
     <div class="top"> <h1>Witaj w sklepie!</h1> </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <p>Curr_buyer <%= get_buyer.id %></p>
+    <p><b>Twój koszyk, suma xxx zł.</b></p>
     <div class="right">
       <div class="left">
-        <% if @categories %>
+        <% if @categories and not admin_signed_in? %>
           <% @categories.each do |category| %>
               <p><%= link_to category.name, category %>
           <% end %>
+        <% elsif admin_signed_in? %>
+          <%= link_to "Zamówienia", admin_root_path %>
+          <%= link_to "Produkty", admin_products_path %>
+          <%= link_to "Kategorie", admin_categories_path %>
         <% end %>
-        <p>kat</p>
-        <p>kat</p>
-        <p>kat</p>
-        <p>kat</p>
-        <p>kat</p>
-        <p>kat</p>
-        <p>kat</p>
-        <p>kat</p>
-        <p>kat</p>
-
         <%= yield :left %>
       </div>
       <%= yield :right %>
