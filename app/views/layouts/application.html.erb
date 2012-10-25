@@ -17,6 +17,13 @@
     <p class="alert"><%= alert %></p>
     <% if not admin_signed_in? %>
       <p><b><%= link_to "Twój koszyk", :controller => "/cart", :action => :index %>, suma <%= get_cart_sum %> zł.</b></p>
+      <% if not (cart_products=get_cart_products).nil? %>
+        <ul>
+          <% cart_products.each do |t| %>
+            <li> <%= t.name %>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
     <div class="right">
       <div class="left">

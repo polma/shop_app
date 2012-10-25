@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :get_buyer, :get_cart, :get_cart_sum
+  helper_method :get_buyer, :get_cart, :get_cart_sum, :get_cart_products
 
   private 
 
@@ -27,5 +27,15 @@ class ApplicationController < ActionController::Base
     @cart = get_cart
     if @cart.nil? then return 0 end
     @cart.order_items.sum("price") / 100.0
+  end
+
+  def get_cart_products
+    @cart = get_cart
+    if @cart.nil? then return nil end
+    @cart_products = []
+    @cart.order_items.each do |t|
+      @cart_products << t.product
+    end
+    @cart_products
   end
 end

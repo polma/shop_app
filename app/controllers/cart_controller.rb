@@ -1,12 +1,7 @@
 class CartController < ApplicationController
   def index
+    @products = get_cart_products
     @categories = Category.all
-    @cart = get_cart
-    if @cart.nil? then return end
-    @products = []
-    @cart.order_items.each do |t|
-      @products << t.product
-    end
   end
 
   def show
