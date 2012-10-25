@@ -45,3 +45,6 @@ gem 'devise'
 
 #for simple form validation
 gem 'dynamic_form'
+
+gem 'faker'
+gem 'ransack'
