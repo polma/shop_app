@@ -19,6 +19,8 @@ ShopApp::Application.routes.draw do
   match 'cart/index' => "cart#index"
   match 'order/confirm' => "order#confirm"
   match 'order/validate_address' => "order#validate_address"
+
+  match 'search/results' => "search#results"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

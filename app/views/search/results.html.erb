@@ -1,0 +1,8 @@
+<% content_for :right do %>
+  <h3>Wyniki wyszukiwania</h3>
+  <% if @result %>
+    <% @result.each do |t| %>
+      <p><%= link_to t.name, t %></p>
+    <% end %>
+  <% end %>
+<% end %>

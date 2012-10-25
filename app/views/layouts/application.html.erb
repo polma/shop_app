@@ -11,6 +11,22 @@
     <% #render 'devise/menu/registration_items' %>
     <%= render 'devise/menu/login_items' %>
   </ul>
+  <div class="search">
+    Szukaj: <%= search_form_for get_q, :url=>search_results_path do |f| %>
+      <%= f.label( :name_cont, "Nazwa") %>
+      <%= f.text_field :name_cont %>
+      <br />
+      <%= f.label( :description_cont, "Opis") %>
+      <%= f.text_field :description_cont %>
+      <br />
+      <%= f.label( :price_gteq, "Cena od") %>
+      <%= f.text_field :price_gteq , :style => 'width:70px;' %>
+      <%= f.label( :price_lteq, "Cena do") %>
+      <%= f.text_field :price_lteq, :style => 'width:70px;'  %>
+      <br /> 
+      <%= f.submit "Szukaj!" %>
+    <% end %>
+  </div>
   <div class="container">
     <div class="top"> <h1>Witaj w sklepie!</h1> </div>
     <p class="notice"><%= notice %></p>

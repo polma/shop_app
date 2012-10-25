@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :get_buyer, :get_cart, :get_cart_sum, :get_cart_products
-
+  helper_method :get_buyer, :get_cart, :get_cart_sum, :get_cart_products, :get_q
+  
   private 
-
+  
+  def get_q
+    Product.search(params[:q])
+  end
   def get_buyer
     if session[:buyer_id].nil?
       @current_buyer = Buyer.create
