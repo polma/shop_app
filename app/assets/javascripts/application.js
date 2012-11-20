@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require YouAreDaBomb
+//= require YouAreDaChef
+//= require sugar-1.3.min
+//= require handlebars-1.0.0.beta.6
+//= require jstorage.min
+//= require jquery.json-2.3.min
 //= require_tree .

@@ -1,0 +1,22 @@
+<% content_for :left do %>
+<p><b>Wszystkie kategorie</b></p>
+<div id="menu">
+</div>
+<script type='text/x-handlebars-template' id='category-list-template'>
+  <a href="">
+    {{ this.name }}
+  </a>
+	<br/ >
+</script>
+<% end %>
+<% content_for :right do %>
+  <p><b>Wszystkie produkty</b></p>
+  <div id='products-div'>
+  </div>
+<script type='text/x-handlebars-template' id='product-list-template'>
+  <div class="product">
+    {{ this.name }}
+    <a href="">Wiecej</a>
+  </div>
+</script>
+<% end %>
