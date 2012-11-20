@@ -25,11 +25,21 @@ class ShopUseCase
   
   showCats: ->
   showProds: ->
-  showCat: ->
-  showProd: ->
+  showCat: (id) ->
+  showProd: (id) ->
 
-  clientAddsItem: (id) =>
-    alert(id)
+  findProd: (id) ->
+    for p in @products
+      if p.id == id
+        return p
+  findCat: (id) ->
+    for c in @categories
+      if c.id == id
+        return c
+  findProdsForCat: (id) ->
+    return @products.filter (p) -> p.category_id == id
+
+  addToCart: (id) =>
 
 class GUI
   constructor: ->
@@ -45,6 +55,24 @@ class GUI
     template = Handlebars.compile(source)
     for c in useCase.products
       $("#products-div").append(template(c))
+  show_product: (p) =>
+    #alert(p.id);
+    pcat = useCase.findCat(p.category_id)
+    p.catname = pcat.name
+    p.price = p.price / 100
+    console.log(p.catname)
+    source = $("#product-template").html()
+    template = Handlebars.compile(source)
+    console.log(source)
+    $("#products-div").html(template(p))
+    p.price = p.price * 100
+  show_category: (id)=>
+    pcs = useCase.findProdsForCat(id)
+    source = $("#product-list-template").html()
+    $("#products-div").html("")
+    template = Handlebars.compile(source)
+    for p in pcs
+      $("#products-div").append(template(p))
 
 
 class WebGlue
@@ -53,6 +81,8 @@ class WebGlue
     After(@mem, 'save_categories', => @gui.show_categories())
     Before(@useCase, 'showProds', => @mem.download_products())
     After(@mem, 'save_products', => @gui.show_products())
+    After(@useCase, 'showProd', (id) => @gui.show_product(useCase.findProd(id)))
+    After(@useCase, 'showCat', (id) => @gui.show_category(id))
 
 class Main
   constructor: ->
@@ -70,6 +100,6 @@ class Category
   constructor: (@id, @name) ->
 
 class Product
-  constructor: (@id, @name, @description, @price, @category_id) ->
-
+  constructor: (@id, @name, @description, @price, @category_id, @catname = "") ->
+  
 $(-> new Main())

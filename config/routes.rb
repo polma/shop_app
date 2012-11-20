@@ -21,9 +21,15 @@ ShopApp::Application.routes.draw do
   match 'order/validate_address' => "order#validate_address"
 
   match 'search/results' => "search#results"
-  
+
+  resource :spa
+  match 'spa' => 'spas#show'
+  match 'spa/get_categories' => "spas#get_categories"
+  match 'spa/get_products' => "spas#get_products"
+
   # The priority is based upon order of creation:
-  # first created -> highest priority.
+  # first created -> highest priority.:w
+  #
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

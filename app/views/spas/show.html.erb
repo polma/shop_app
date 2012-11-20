@@ -3,7 +3,7 @@
 <div id="menu">
 </div>
 <script type='text/x-handlebars-template' id='category-list-template'>
-  <a href="">
+  <a href="#" onclick="useCase.showCat( {{this.id}} )">
     {{ this.name }}
   </a>
 	<br/ >
@@ -16,7 +16,16 @@
 <script type='text/x-handlebars-template' id='product-list-template'>
   <div class="product">
     {{ this.name }}
-    <a href="">Wiecej</a>
+    <a href="#" onclick="useCase.showProd( {{ this.id }} )">Wiecej</a>
   </div>
+</script>
+<script type='text/x-handlebars-template' id='product-template'>
+  <ul>
+    <li>Nazwa: {{ this.name }}
+    <li>Opis: {{ this.desc }}
+    <li>Kategoria: {{this.catname}}
+    <li>Cena: {{ this.price }}
+  </ul>
+  <a href="#" onclick="useCase.addToCart({{ this.id }})">Dodaj do koszyka</a>
 </script>
 <% end %>
