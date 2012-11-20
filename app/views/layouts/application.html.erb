@@ -31,7 +31,7 @@
     <div class="top"> <h1>Witaj w sklepie!</h1> </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% if not admin_signed_in? %>
+    <% if not admin_signed_in? and not @spa %>
       <p><b><%= link_to "Twój koszyk", :controller => "/cart", :action => :index %>, suma <%= get_cart_sum %> zł.</b></p>
       <% if not (cart_products=get_cart_products).nil? %>
         <ul>
@@ -40,6 +40,10 @@
           <% end %>
         </ul>
       <% end %>
+    <% end %>
+    <% if @spa %>
+      <p><b><a href="" onclick="useCase.showCart()">Twój koszyk</a></b>
+      <ul id="cart-min"> </ul>
     <% end %>
     <div class="right">
       <div class="left">

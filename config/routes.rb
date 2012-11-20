@@ -26,6 +26,8 @@ ShopApp::Application.routes.draw do
   match 'spa' => 'spas#show'
   match 'spa/get_categories' => "spas#get_categories"
   match 'spa/get_products' => "spas#get_products"
+  match 'spa/add_to_cart/:id' => "cart#add"
+  match 'cart/get' => "cart#get"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.:w

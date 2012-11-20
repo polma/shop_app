@@ -2,7 +2,7 @@ class SpasController < ApplicationController
   def index
   end
   def show
-
+    @spa = true
   end
 
   def get_categories

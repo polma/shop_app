@@ -12,6 +12,21 @@ class Memory
   
   download_products: =>
     $.getJSON "/spa/get_products.json", (d, s) => @save_products(d)
+    
+  add_to_cart: (id) ->
+    $.ajax({
+      url: "/cart/add/"+id,
+      data: {id: id},
+      type: 'POST',
+      async: false,
+      success: (d,s,x)=>
+        alert("Pomyslnie dodano do koszyka."); 
+    })
+
+  download_cart: =>
+    $.getJSON '/cart/get', (d, s) => @save_cart(d)
+  save_cart: (json_table) =>
+    useCase.cart = json_table.map (e) -> new Product(e.id, e.name, e.description, e.price, e.category_id)
 
   get_categories: =>
     alert("mem get c")
@@ -25,6 +40,8 @@ class ShopUseCase
   
   showCats: ->
   showProds: ->
+  showCartMin: ->
+  showCart: ->
   showCat: (id) ->
   showProd: (id) ->
 
@@ -73,6 +90,15 @@ class GUI
     template = Handlebars.compile(source)
     for p in pcs
       $("#products-div").append(template(p))
+  show_cart_min: () =>
+    source = $("#cart-min-template").html()
+    $("#cart-min").html("")
+    template = Handlebars.compile(source)
+    for e in useCase.cart
+      e.price = e.price / 100.0
+      $("#cart-min").append(template(e))
+      e.price = e.price * 100.0
+    
 
 
 class WebGlue
@@ -81,8 +107,12 @@ class WebGlue
     After(@mem, 'save_categories', => @gui.show_categories())
     Before(@useCase, 'showProds', => @mem.download_products())
     After(@mem, 'save_products', => @gui.show_products())
+    Before(@useCase, 'showCartMin', => @mem.download_cart())
+    After(@mem, 'save_cart', => @gui.show_cart_min())
     After(@useCase, 'showProd', (id) => @gui.show_product(useCase.findProd(id)))
     After(@useCase, 'showCat', (id) => @gui.show_category(id))
+    Before(@useCase, 'addToCart', (id) => @mem.add_to_cart(id))
+    After(@mem, 'add_to_cart', (id) => @mem.download_cart())
 
 class Main
   constructor: ->
@@ -95,6 +125,7 @@ class Main
     glue = new WebGlue(useCase, gui, mem)
     useCase.showCats()
     useCase.showProds()
+    useCase.showCartMin()
 
 class Category
   constructor: (@id, @name) ->

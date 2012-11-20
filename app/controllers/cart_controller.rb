@@ -7,7 +7,16 @@ class CartController < ApplicationController
   def show
       
   end
-
+  def get
+    @cart = get_cart
+    @products = get_cart_products
+    if @cart.nil?
+      @cart = Order.create({:buyer_id => @buyer.id, :confirmed => false, :sent => false})
+    end
+    respond_to do |f|
+      f.json { render :json => @products}
+    end
+  end
   def add
     @buyer = get_buyer
 
@@ -27,8 +36,10 @@ class CartController < ApplicationController
                       :price => Product.find(params[:id]).price})
 
     #TODO: add checks for product (params[:id] could be modified)
-    
-    redirect_to root_url, :notice => "Dodano produkt do koszyka."
+    respond_to do |format|
+      format.html {redirect_to root_url, :notice => "Dodano produkt do koszyka."}
+      format.json {render :json => "Dodano produkt do koszyka."}
+    end
 
   end
 end
