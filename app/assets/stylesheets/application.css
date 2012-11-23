@@ -20,6 +20,8 @@ div.footer { height:50px; background-color:light yellow; clear:both; font-size:s
 
 div.product {border:2px solid red; margin:2px;  float:left; width:150px; height:150px;}
 
+p.notice {font-size:large; font-color:blue;}
+
 input, textarea {
 	padding: 9px;
 	border: solid 1px #E5E5E5;

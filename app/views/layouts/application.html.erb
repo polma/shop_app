@@ -11,22 +11,41 @@
     <% #render 'devise/menu/registration_items' %>
     <%= render 'devise/menu/login_items' %>
   </ul>
+  <% if not @spa %>
+    <div class="search">
+      Szukaj: <%= search_form_for get_q, :url=>search_results_path do |f| %>
+        <%= f.label( :name_cont, "Nazwa") %>
+        <%= f.text_field :name_cont %>
+        <br />
+        <%= f.label( :description_cont, "Opis") %>
+        <%= f.text_field :description_cont %>
+        <br />
+        <%= f.label( :price_gteq, "Cena od") %>
+        <%= f.text_field :price_gteq , :style => 'width:70px;' %>
+        <%= f.label( :price_lteq, "Cena do") %>
+        <%= f.text_field :price_lteq, :style => 'width:70px;'  %>
+        <br /> 
+        <%= f.submit "Szukaj!" %>
+      <% end %>
+    </div>
+  <% else %>
   <div class="search">
-    Szukaj: <%= search_form_for get_q, :url=>search_results_path do |f| %>
-      <%= f.label( :name_cont, "Nazwa") %>
-      <%= f.text_field :name_cont %>
+    Szukaj: <form accept-charset="UTF-8" action="#" class="product_search" id="product_search" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+      <label for="q_name_cont">Nazwa</label>
+      <input id="q_name_cont" name="q[name_cont]" size="30" type="text" />
       <br />
-      <%= f.label( :description_cont, "Opis") %>
-      <%= f.text_field :description_cont %>
+      <label for="q_description_cont">Opis</label>
+      <input id="q_description_cont" name="q[description_cont]" size="30" type="text" />
       <br />
-      <%= f.label( :price_gteq, "Cena od") %>
-      <%= f.text_field :price_gteq , :style => 'width:70px;' %>
-      <%= f.label( :price_lteq, "Cena do") %>
-      <%= f.text_field :price_lteq, :style => 'width:70px;'  %>
+      <label for="q_price_gteq">Cena od</label>
+      <input id="q_price_gteq" name="q[price_gteq]" size="30" style="width:70px;" type="text" />
+      <label for="q_price_lteq">Cena do</label>
+      <input id="q_price_lteq" name="q[price_lteq]" size="30" style="width:70px;" type="text" />
       <br /> 
-      <%= f.submit "Szukaj!" %>
-    <% end %>
+      <input name="commit" onclick="useCase.search()" type="submit" value="Szukaj!" />
+    </form>  
   </div>
+  <% end %>
   <div class="container">
     <div class="top"> <h1>Witaj w sklepie!</h1> </div>
     <p class="notice"><%= notice %></p>
@@ -42,7 +61,7 @@
       <% end %>
     <% end %>
     <% if @spa %>
-      <p><b><a href="" onclick="useCase.showCart()">Twój koszyk</a></b>
+      <p><b><a href="#" onclick="useCase.showCart()">Twój koszyk</a> suma: <span id="cart-sum"></span> zł.</b></p>
       <ul id="cart-min"> </ul>
     <% end %>
     <div class="right">

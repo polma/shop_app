@@ -4,7 +4,7 @@ class OrderController < ApplicationController
   def confirm
     @cart = get_cart
     if @cart.nil?
-      redirect_to root_url, :notice => "Nie potwierdzam pustego zamowienia."
+        redirect_to root_url, :notice => "Nie potwierdzam pustego zamowienia."
     end
     @shipping = ShippingAddress.new
   end
@@ -24,5 +24,20 @@ class OrderController < ApplicationController
     ShippingAddress.create(address)
 
     redirect_to root_url, :notice => "Zamowienie zostalo potwierdzone!"
+  end
+
+  def confirm_json
+    @cart = get_cart
+    if @cart.nil? #shouldn't happen
+      return
+    end
+    @cart.confirmed = true
+    @cart.save
+    address = ShippingAddress.new
+    address.order_id = @cart.id
+    address.save
+    respond_to do |format|
+      format.json {render :json => "Confirmed"}
+    end
   end
 end
