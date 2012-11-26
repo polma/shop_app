@@ -1,6 +1,7 @@
 class Memory
   constructor: ->
 
+  whatever: -> 1
   save_categories: (json_table) =>
     useCase.categories = json_table.map (e) -> new Category(e.id, e.name)
   
@@ -35,7 +36,7 @@ class Memory
     if useCase.cart.length > 0
       console.log("confirming cart")
       $.ajax({
-        url: "/order/confirm_json",
+        url: "/order/confirm_json.json",
         type: 'POST',
         async: false,
         success: (d,s,x) =>

@@ -48,3 +48,7 @@ gem 'dynamic_form'
 
 gem 'faker'
 gem 'ransack'
+
+group :test, :development do
+  gem 'jasmine-rails'
+end
