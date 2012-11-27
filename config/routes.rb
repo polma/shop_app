@@ -1,5 +1,5 @@
 ShopApp::Application.routes.draw do
-  mount JasmineRails::Engine => "/specs" unless Rails.env.production?
+  mount JasmineRails::Engine => "/specs" 
   resource :shop
   
   root :to => "shop#index"
