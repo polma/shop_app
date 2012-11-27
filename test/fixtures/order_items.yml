@@ -1,0 +1,19 @@
+oi1:
+  id: 1
+  order_id: 1
+  product_id: 1
+  price: 10000
+
+oi2:
+  id: 2
+  order_id: 1
+  product_id: 1
+  price: 12000
+
+oi3:
+  id: 3
+  order_id: 2
+  product_id: 1
+  price: 900
+
+

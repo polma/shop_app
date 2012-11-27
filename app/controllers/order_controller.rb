@@ -40,4 +40,5 @@ class OrderController < ApplicationController
       format.json {render :json => "Confirmed"}
     end
   end
+
 end

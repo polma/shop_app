@@ -1,0 +1,14 @@
+o1:
+  id: 1
+  buyer_id: 1
+  confirmed: false
+
+o2:
+  id: 2
+  buyer_id: 1
+  confirmed: true
+
+o3:
+  id: 3
+  buyer_id: 1
+  confirmed: false
